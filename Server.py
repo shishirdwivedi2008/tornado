@@ -1,6 +1,7 @@
 import tornado.web
 import tornado.ioloop
 import Settings
+import os
 from Login import *
 class Server(tornado.web.RequestHandler):
     def get(self):
@@ -8,8 +9,8 @@ class Server(tornado.web.RequestHandler):
 
 setting={
         'debug':True,
-        'static_path':Settings.Static_Path,
-        'template_path':Settings.Template_Path
+        'static_path':os.path.join(os.getcwd(),'static'),
+        'template_path':os.path.join(os.getcwd(),'template')
 }
 
 handler=[
