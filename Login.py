@@ -17,3 +17,7 @@ class About(tornado.web.RequestHandler):
 class Contact(tornado.web.RequestHandler):
     def get(self):
         self.render("contact.html")
+
+class Index(tornado.web.RequestHandler):
+    def get(self):
+        self.render("index.html")
