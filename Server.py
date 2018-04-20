@@ -13,7 +13,7 @@ setting={
 }
 
 handler=[
-        (r"/",Server)
+        (r"/",Server),(r"/login.*",Login)
  ]
 
 application=tornado.web.Application(handler,**setting)
