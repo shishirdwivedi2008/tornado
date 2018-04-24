@@ -1,7 +1,7 @@
 import tornado.web
 import  tornado.ioloop
 import json
-
+from MongoConnection import MongoConnection
 class Login(tornado.web.RequestHandler):
     def get(self):
         self.render("login.html")
@@ -9,14 +9,21 @@ class Login(tornado.web.RequestHandler):
     def post(self):
         username=self.get_argument("form-username")
         password=self.get_argument("form-password")
-        if(username=="shishirdwivedi2008@gmail.com" and password=="shishir"):
-            self.redirect("/post.html")
+        connection=MongoConnection()
+        if(connection.checkUserNameAndPassword(username,password)):
+            self.set_secure_cookie("admin",self.get_argument("form-username"))
+            self.redirect("/post")
         else:
-            self.redirect("/index.html")
+            self.redirect("/index")
 
 class Post(tornado.web.RequestHandler):
     def get(self):
-        self.render("post.html")
+        if  self.get_secure_cookie('admin'):
+            self.render("post.html")
+        else:
+            self.redirect("/index")
+
+
 
 class About(tornado.web.RequestHandler):
     def get(self):

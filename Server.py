@@ -2,7 +2,9 @@ import tornado.web
 import tornado.ioloop
 import Settings
 import os
-from Login import *
+from Routes import *
+from tornado.log import enable_pretty_logging
+enable_pretty_logging()
 
 class Server(tornado.web.RequestHandler):
     def prepare(self):
@@ -15,9 +17,10 @@ class Server(tornado.web.RequestHandler):
 setting=dict({
         'debug':True,
         'static_path':os.path.join(os.getcwd(),'static'),
-        'template_path':os.path.join(os.getcwd(),'template')
+        'template_path':os.path.join(os.getcwd(),'template'),
+        'cookie_secret': b'$2b$12$.fHCIiJT8UWFS2DdvMWe6O5JqHu.MKjh.Vl8yBhwmv0to5ARqjWXa',
+        'login_url': "/login",
 },
-    
 )
 
 handler=[
