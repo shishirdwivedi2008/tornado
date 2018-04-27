@@ -2,9 +2,12 @@ import tornado.web
 import tornado.ioloop
 import Settings
 import os
+import base64
 from Routes import *
 from tornado.log import enable_pretty_logging
 enable_pretty_logging()
+from MongoConnection import MongoConnection
+from datetime import datetime
 
 class Server(tornado.web.RequestHandler):
     def prepare(self):
@@ -12,7 +15,7 @@ class Server(tornado.web.RequestHandler):
             self.redirect('https://' + self.request.host, permanent=False)
         
     def get(self):
-        self.render("index.html")
+        self.render("index1.html",items=MongoConnection().getSummary(),)
 
 setting=dict({
         'debug':True,
@@ -24,7 +27,7 @@ setting=dict({
 )
 
 handler=[
-        (r"/",Server),(r"/login.*",Login),(r"/post.*",Post),(r"/about.*",About),(r"/contact.*",Contact),
+        (r"/",Server),(r"/login.*",Login),(r"/post/([0-9]+)",Post),(r"/about.*",About),(r"/contact.*",Contact),
     (r"/index.*",Index)
  ]
 

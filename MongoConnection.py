@@ -1,7 +1,9 @@
 from apt_pkg import init
 from pymongo import MongoClient
-
+import pymongo
+import cgi
 import bcrypt
+import base64
 
 class MongoConnection:
     salt = b'$2b$12$.fHCIiJT8UWFS2DdvMWe6O'
@@ -31,11 +33,30 @@ class MongoConnection:
         user = {"user": username, "userhash": userHash, "password": pwdHash, "role": "admin"}
         db.user.insert_one(user).inserted_id
 
+    def getSummary(self):
+        summary = []
+        db = self.client.summary;
+        data = db.summary.find().sort('post_id', pymongo.DESCENDING).limit(3)
+        for document in data:
+            summary.append(base64.b64decode(document['summary']))
+
+        return summary
+
+
+    def getArticle(self,id ):
+        article_data=[]
+        db=self.client.article
+        data=db.article.find({'post_id':id})
+        for document in data:
+             article_data.append(base64.b64decode(document['article']))
+
+        return article_data
+
 
 
 if __name__ == '__main__':
     con=MongoConnection()
-    con.checkUserNameAndPassword("SomeRandomCookieSecret","djkd")
+    print(con.getArticle(1))         
 
-
+                               
 
