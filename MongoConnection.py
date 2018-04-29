@@ -43,10 +43,11 @@ class MongoConnection:
         return summary
 
 
-    def getArticle(self,id ):
+    def getArticle(self,post_id ):
+        print("Id got is "+str(post_id))
         article_data=[]
         db=self.client.article
-        data=db.article.find({'post_id':id})
+        data=db.article.find({'post_id':int(post_id)})
         for document in data:
              article_data.append(base64.b64decode(document['article']))
 
