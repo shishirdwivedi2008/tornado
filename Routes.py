@@ -37,4 +37,4 @@ class Contact(tornado.web.RequestHandler):
 
 class Index(tornado.web.RequestHandler):
     def get(self):
-        self.render("index.html")
+        self.redirect("/")
