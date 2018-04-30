@@ -36,7 +36,7 @@ class MongoConnection:
     def getSummary(self):
         summary = []
         db = self.client.summary;
-        data = db.summary.find().sort('post_id', pymongo.DESCENDING).limit(3)
+        data = db.summary.find().sort('post_id', pymongo.DESCENDING).limit(10)
         for document in data:
             summary.append(base64.b64decode(document['summary']))
 

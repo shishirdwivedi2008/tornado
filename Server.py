@@ -28,7 +28,7 @@ setting=dict({
 
 handler=[
         (r"/",Server),(r"/login.*",Login),(r"/post/([0-9]+)",Post),(r"/about.*",About),(r"/contact.*",Contact),
-    (r"/index.*",Index)
+    (r"/index.*",Index),(r"/post",Post)
  ]
 
 application=tornado.web.Application(handler,**setting)

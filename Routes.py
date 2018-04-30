@@ -20,6 +20,11 @@ class Post(tornado.web.RequestHandler):
     def get(self,post_id):
         self.render("post.html",items=MongoConnection().getArticle(post_id),)
 
+class PostWithoutParam(tornado.web.RequestHandler):
+    def get(self):
+        self.render("index1.html",items=MongoConnection().getSummary())
+
+
 
 
 
