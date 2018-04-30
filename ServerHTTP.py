@@ -4,7 +4,7 @@ import tornado.ioloop
 
 class Main(tornado.web.RequestHandler):
     def get(self):
-        self.redirect("https://localhost:8888")
+        self.redirect("https://34.217.175.167:8888")
 
 
 handler=[

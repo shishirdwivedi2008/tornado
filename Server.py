@@ -41,6 +41,5 @@ http_server = tornado.httpserver.HTTPServer(application,ssl_options = {
 
 if __name__ == '__main__':
     http_server.listen(8888)
-    #application.listen(8080)
     print("Listening HTTPS on port 8888")
     tornado.ioloop.IOLoop.instance().start()

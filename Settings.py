@@ -1,3 +1,4 @@
+#coding:utf-8
 Template_Path='/u/dwivedi/Downloads/tornado/template'
 Static_Path='/u/dwivedi/Downloads/tornado/static'
 
@@ -232,4 +233,4 @@ public static void main (String args[]) {
     </article>
 
     <hr>
-'''
+'''''

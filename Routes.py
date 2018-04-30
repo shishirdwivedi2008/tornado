@@ -18,12 +18,8 @@ class Login(tornado.web.RequestHandler):
 
 class Post(tornado.web.RequestHandler):
     def get(self,post_id):
-        print("Post id is "+post_id)
-        if  self.get_secure_cookie('admin'):
-            print(MongoConnection().getArticle(post_id))
-            self.render("post.html",items=MongoConnection().getArticle(post_id),)
-        else:
-            self.redirect("/index")
+        self.render("post.html",items=MongoConnection().getArticle(post_id),)
+
 
 
 
