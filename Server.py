@@ -6,7 +6,7 @@ from Routes import *
 from tornado.log import enable_pretty_logging
 enable_pretty_logging()
 from datetime import datetime
-import
+
 
 class Server(tornado.web.RequestHandler):
     def hprepare(self):
@@ -15,7 +15,7 @@ class Server(tornado.web.RequestHandler):
         
     def get(self):
         self.render("index.html",items=MongoConnection().getSummary())
-        
+
 setting=dict({
         'debug':True,
         'static_path':os.path.join(os.getcwd(),'static'),
@@ -27,7 +27,7 @@ setting=dict({
 
 handler=[
         (r"/",Server),(r"/login.*",Login),(r"/post.*",Post),(r"/about.*",About),(r"/contact.*",Contact),
-    (r"/index.*",Index)
+    (r"/index.*",Index),(r"/post",Post)
  ]
 
 application=tornado.web.Application(handler,**setting)
