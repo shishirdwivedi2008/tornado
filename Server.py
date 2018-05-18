@@ -26,7 +26,7 @@ setting=dict({
 )
 
 handler=[
-        (r"/",Server),(r"/login.*",Login),(r"/post.*",Post),(r"/about.*",About),(r"/contact.*",Contact),
+        (r"/",Server),(r"/login.*",Login),(r"/post/([0-9]+)",Post),(r"/about.*",About),(r"/contact.*",Contact),
     (r"/index.*",Index),(r"/post",Post)
  ]
 
