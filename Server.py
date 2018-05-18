@@ -2,21 +2,20 @@ import tornado.web
 import tornado.ioloop
 import Settings
 import os
-import base64
 from Routes import *
 from tornado.log import enable_pretty_logging
 enable_pretty_logging()
-from MongoConnection import MongoConnection
 from datetime import datetime
+import
 
 class Server(tornado.web.RequestHandler):
-    def prepare(self):
+    def hprepare(self):
         if self.request.protocol == 'http':
             self.redirect('https://' + self.request.host, permanent=False)
         
     def get(self):
-        self.render("index1.html",items=MongoConnection().getSummary(),)
-
+        self.render("index.html",items=MongoConnection().getSummary())
+        
 setting=dict({
         'debug':True,
         'static_path':os.path.join(os.getcwd(),'static'),
@@ -27,8 +26,8 @@ setting=dict({
 )
 
 handler=[
-        (r"/",Server),(r"/login.*",Login),(r"/post/([0-9]+)",Post),(r"/about.*",About),(r"/contact.*",Contact),
-    (r"/index.*",Index),(r"/post",Post)
+        (r"/",Server),(r"/login.*",Login),(r"/post.*",Post),(r"/about.*",About),(r"/contact.*",Contact),
+    (r"/index.*",Index)
  ]
 
 application=tornado.web.Application(handler,**setting)
@@ -40,6 +39,7 @@ http_server = tornado.httpserver.HTTPServer(application,ssl_options = {
 
 
 if __name__ == '__main__':
-    http_server.listen(8888)
-    print("Listening HTTPS on port 8888")
+    http_server.listen(443)
+    #application.listen(8080)
+    print("Listening HTTPS on port 443")
     tornado.ioloop.IOLoop.instance().start()

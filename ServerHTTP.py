@@ -4,7 +4,7 @@ import tornado.ioloop
 
 class Main(tornado.web.RequestHandler):
     def get(self):
-        self.redirect("https://34.217.175.167:8888")
+        self.redirect("https://AforAlgo.com/")
 
 
 handler=[
@@ -14,7 +14,7 @@ handler=[
 application=tornado.web.Application(handler)
 
 if __name__ == '__main__':
-    application.listen(8080)
+    application.listen(80)
     print("Listening HTTP server at 8080")
     tornado.ioloop.IOLoop.instance().start()
     
