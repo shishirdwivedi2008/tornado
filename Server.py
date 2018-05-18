@@ -14,7 +14,7 @@ class Server(tornado.web.RequestHandler):
             self.redirect('https://' + self.request.host, permanent=False)
         
     def get(self):
-        self.render("index.html",items=MongoConnection().getSummary())
+        self.render("index1.html",items=MongoConnection().getSummary())
 
 setting=dict({
         'debug':True,
