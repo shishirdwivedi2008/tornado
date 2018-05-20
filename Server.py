@@ -31,11 +31,15 @@ handler=[
  ]
 
 application=tornado.web.Application(handler,**setting)
+# Enable this piece of code when what to do HTTPS
+#http_server = tornado.httpserver.HTTPServer(application,ssl_options = {
+ #   "certfile": os.path.join(os.getcwd(),'host.cert'),
+  #  "keyfile": os.path.join(os.getcwd(),'host.key'),
+   # })
 
-http_server = tornado.httpserver.HTTPServer(application,ssl_options = {
-    "certfile": os.path.join(os.getcwd(),'host.cert'),
-    "keyfile": os.path.join(os.getcwd(),'host.key'),
-    })
+#HTTP Connection only
+http_server = tornado.httpserver.HTTPServer(application)
+
 
 
 if __name__ == '__main__':
