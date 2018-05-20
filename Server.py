@@ -18,7 +18,7 @@ class Server(tornado.web.RequestHandler):
 
 setting=dict({
         'debug':True,
-        'static_path':os.path.join(os.getcwd(),'static'),
+       #'static_path':os.path.join(os.getcwd(),'static'), # Disabling it since serving content from nginx
         'template_path':os.path.join(os.getcwd(),'template'),
         'cookie_secret': b'$2b$12$.fHCIiJT8UWFS2DdvMWe6O5JqHu.MKjh.Vl8yBhwmv0to5ARqjWXa',
         'login_url': "/login",
@@ -43,7 +43,7 @@ http_server = tornado.httpserver.HTTPServer(application)
 
 
 if __name__ == '__main__':
-    http_server.listen(443)
+    http_server.listen(8081)
     #application.listen(8080)
-    print("Listening HTTPS on port 443")
+    print("Listening HTTPS on port 8081")
     tornado.ioloop.IOLoop.instance().start()
