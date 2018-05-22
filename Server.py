@@ -11,7 +11,7 @@ from datetime import datetime
 class Server(tornado.web.RequestHandler):
     def hprepare(self):
         if self.request.protocol == 'http':
-            self.redirect('https://' + self.request.host, permanent=False)
+            self.redirect('http://' + self.request.host, permanent=False)
         
     def get(self):
         self.render("index1.html",items=MongoConnection().getSummary())
