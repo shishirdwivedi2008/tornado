@@ -3,7 +3,7 @@ Template_Path = '/u/dwivedi/Downloads/tornado/template'
 Static_Path = '/u/dwivedi/Downloads/tornado/static'
 
 summary = """<div class="post-preview">
-            <a href="post/3">
+            <a href="post/4">
               <h2 class="post-title">
                Learning Tree Data Structure(Basics)
               </h2>
