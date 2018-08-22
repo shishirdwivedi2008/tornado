@@ -154,7 +154,7 @@ Let’s go to the insertion part! What do we need to do here? We will implement 
               self.left_child = new_node
 
     </code>
-    <pre>
+    </pre>
     <p>Again, if the current node doesn’t have a left child, we just create a new node and set it to the current node’s left_child. Else we create a new node and put it in the current left child‘s place. Allocate this left child node to the new node‘s left child.</p>
     <p>And we do the same thing to to insert a right child node.</p>
     <pre>
